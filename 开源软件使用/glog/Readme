@@ -1,0 +1,16 @@
+源码: https://github.com/google/glog.git
+
+构建方法:
+
+---windows---
+glog目前没有提供对windows的工程文件支持(vs的sln文件)，所以需要自己创建工程，然后编译输出lib或dll
+1）下载源码，解压到英文路径
+2）下载cmake，解压到英文路径
+3）打开cmake-gui，指定source path，glog源码目录中，有CMakeLists.txt文件的目录
+4）指定一个工程输出目录，在源码目录下创建一个build-1即可
+5）点击configure，此时会提示选择使用哪个vs作为工程容器，这里一定要选择本机安装的vs版本，不然会报错，无法通过
+6）第5步结束后，cmake会自动构建和配置，等待即可
+7）待6结束，点击Generate即可
+8）进入build-1目录，找到sln文件，打开，选择release/debug版本，构建
+9）在相应的release和debug目录下，找到对应的输出文件 --> dll/lib
+10）取出库文件和头文件，使用即可
