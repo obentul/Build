@@ -1,0 +1,6 @@
+MSVC是微软的VC编译器
+MinGW缩写为Minimalist GNU on Windows，GNU为Windows开发程序开发准备的编译器
+
+
+windows环境下，当使用开源库的时候，务必确认下载库和MSVC编译器在架构上一致。
+比如操作系统是64位，MSVC是win32，那么下载开源库的时候需要使用win32而不是win64
