@@ -1,0 +1,58 @@
+使用 __declspec(dllexport) 修饰的函数声明/直接函数实现。表明可以作为  动态库 接口被外界链接和调用。否则不可以。
+
+
+这里也引入一个工程惯例：动态库接口函数的定义一般不放在类中，而是直接使用namespace修饰后，再使用  __declspec(dllexport) 导出。
+
+
+比如有
+
+mydll.h
+===========================================================
+ namespace MyDLL{
+	
+	__declspec(dllexport) void myfunc1();
+
+	__declspec(dllexport) void myfunc2();
+
+
+ } 
+
+
+mydll.cpp
+==========================================================
+ namespace MyDLL{
+	__declspec(dllexport) void myfunc1()
+	{
+		//do sth.
+		return;
+	}
+
+
+	__declspec(dllexport) void myfunc2()
+	{
+		//do sth.
+		return;
+	}
+
+ }
+
+
+myclass.cpp
+===========================================================
+
+#include mydll.h
+using namespace MyDLL;
+
+...
+
+
+
+void myclass::invokeMyDLLFunc()
+{
+	myfunc1();
+}
+
+
+
+
+...
